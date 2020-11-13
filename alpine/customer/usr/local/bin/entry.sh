@@ -25,7 +25,9 @@ if ! is_sourced; then
 
 	if [ "$1" = "${APP_EXEC}" ] && is_root; then
     	/usr/local/bin/setup.sh
-		ip addr add ${MROUTED_ETH_CIDR} dev ${MROUTED_ETH_NAME}
+
+    	# 修改网卡对应的 IP, 并防止重复设置导致的命令失败
+		ip addr add ${MROUTED_ETH_CIDR} dev ${MROUTED_ETH_NAME} || :
 
 		# mrouted 应用需要root权限
 		#LOG_I "Restart with non-root user: ${APP_USER}\n"
