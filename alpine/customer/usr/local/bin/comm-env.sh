@@ -34,8 +34,8 @@ export APP_CERT_DIR="/srv/cert/${APP_NAME}"
 
 
 # 应用配置参数
-export MROUTED_ETH_NAME=eth0
-export MROUTED_ETH_CIDR=10.32.0.1/16
+export MROUTED_ETH_NAME="${MROUTED_ETH_NAME:-eth0}"
+export MROUTED_ETH_CIDR="${MROUTED_ETH_CIDR:-10.32.0.1/16}"
 
 # 内部变量
 
