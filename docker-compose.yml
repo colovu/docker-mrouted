@@ -1,0 +1,19 @@
+version: '3.8'
+
+# Docker-Compose 单容器使用参考 YAML 配置文件
+# 更多配置参数请参考镜像 README.md 文档中说明
+services:
+  mrouted:
+    image: 'registry.cn-shenzhen.aliyuncs.com/colovu/mrouted:4.1'
+    privileged: true
+    networks: 
+      - weavenet
+    environment:
+      - MROUTED_ETH_NAME=ethwe0
+      - MROUTED_ETH_CIDR=10.32.0.1/16
+
+networks:
+  weavenet:
+    external:
+      name: weavenet
+
